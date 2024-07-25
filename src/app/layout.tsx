@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: 'Login | Hydrah tec',
   description: 'pagina de login com integração a banco de dados',
   keywords: 'login, cadastro, pagina de login, fazer login, logar',
-  icons: '/img/imgfavicon_login.svg',
+  icons: 'img/imgfaviconlogin.svg',
   robots: 'index, follow',
   authors: [{ name: 'Eliel Silva', url: 'https://github.com/Eliel-Silva-dev' }],
 };

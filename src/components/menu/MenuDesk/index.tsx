@@ -6,16 +6,7 @@ const MenuDesk = () => {
   return (
     <ul className={style.menu_desk}>
       <li>
-        <Link href={'/'}>Inicio</Link>
-      </li>
-      <li>
-        <Link href={'/ofertas'}>Ofertas</Link>
-      </li>
-      <li>
-        <Link href={'/menu'}>Menu</Link>
-      </li>
-      <li>
-        <Link href={'/sobre'}>Sobre</Link>
+        <Link href={'/'}></Link>
       </li>
     </ul>
   );
