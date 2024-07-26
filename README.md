@@ -1,6 +1,6 @@
 # Projeto Pagina Login
 
-pagina de login com conexáo a banco dedados.
+pagina de login com conexão a banco dedados.
 
 [Visitar site]()
 

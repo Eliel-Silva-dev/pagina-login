@@ -16,7 +16,7 @@ const Lgpd = () => {
           Utilizamos cookies para oferecer a melhor experiencia e analisar o uso
           do nosso site. Para mais informações, consulte a nossa{' '}
           <a
-            href="assets/Politica-de-Privacidade.pdf"
+            href="assets/politicadeprivacidade.pdf"
             title="polica de privacidade"
             target="_blank"
           >
