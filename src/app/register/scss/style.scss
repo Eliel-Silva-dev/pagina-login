@@ -1,9 +1,9 @@
-#main_home {
+#main_register {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-#main_home .container {
+#main_register .container {
   width: 300px;
   height: max-content;
   background-color: var(--primary_color);
@@ -13,14 +13,14 @@
   border-radius: 10px;
   box-shadow: 10px 11px rgba(0, 0, 0, 0.7);
 }
-#main_home .container h1 {
+#main_register .container h1 {
   margin-bottom: 10px;
   font-size: 2rem;
 }
-#main_home .container .login_form {
+#main_register .container .login_form {
   padding: 5px;
 }
-#main_home .container .form_field {
+#main_register .container .form_field {
   display: inline-block;
   padding: 5px;
   margin-top: 20px;
@@ -28,13 +28,13 @@
   font-size: 20px;
   width: 100%;
 }
-#main_home .container .form_error {
+#main_register .container .form_error {
   display: block;
   color: red;
   font-size: 0.9em;
   font-weight: 600;
 }
-#main_home .container .button {
+#main_register .container .button {
   margin-top: 20px;
   padding: 10px;
   margin-bottom: 20px;
@@ -43,7 +43,7 @@
   border-radius: 10px;
   cursor: pointer;
 }
-#main_home .container .button:hover {
+#main_register .container .button:hover {
   background-color: var(--secondary_color);
   color: var(--primary_color);
 }
