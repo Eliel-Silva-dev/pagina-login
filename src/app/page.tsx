@@ -12,12 +12,14 @@ type ThandleLogin = {
 };
 export default function Home() {
   const handlelogin = (values: ThandleLogin) => {
-    Axios.post('http://localhost:3001/login', {
+    Axios.post('', {
       email: values.email,
       password: values.password,
     }).then((response) => {
+      console.log(response.data);
       alert(response.data.msg);
     });
+    //http://localhost:3001/login
   };
 
   const validationLogin = yup.object().shape({
@@ -25,7 +27,6 @@ export default function Home() {
       .string()
       .email('Email inválido')
       .required('O email é obrigatório'),
-
     password: yup
       .string()
       .min(6, 'A senha deve ter pelo menos 6 caracteres')

@@ -14,13 +14,14 @@ type ThandleRegister = {
 
 const Register = () => {
   const handleRegister = (values: ThandleRegister) => {
-    Axios.post('http://localhost:3001/register', {
+    Axios.post('', {
       email: values.email,
       password: values.password,
     }).then((response) => {
       alert(response.data.msg);
       console.log(response);
     });
+    //http://localhost:3001/register
   };
 
   const validationsRegister = yup.object().shape({
