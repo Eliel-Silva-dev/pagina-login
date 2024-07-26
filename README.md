@@ -6,8 +6,6 @@ pagina de login com conexáo a banco dedados.
 
 ### Lista com as funcionalidades:
 
-- [x] Cadastro de usuário;
-- [x] Conexão a banco de dados;
 - [x] Implementação da LGPD;
 
 ## 🔧 Instalação
@@ -58,6 +56,8 @@ E com as bibliotecas:
 
 ## Próximos passos
 
+- [ ] Cadastro de usuário;
+- [ ] Conexão a banco de dados;
 - [ ] implementar lazyload;
 - [ ] implementar tema light / dark;
 
