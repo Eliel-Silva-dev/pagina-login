@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Lgpd from '../Lgpd';
 import style from './style.min.module.css';
+import Link from 'next/link';
 
 const Footer = () => {
   const [localStorage, setLocalStorage] = useState(true);
@@ -21,13 +22,8 @@ const Footer = () => {
   return (
     <footer className={style.footer}>
       <p>
-        <a href="assets/politicadeprivacidade.pdf" target="_blank">
-          Politica de privacidade
-        </a>{' '}
-        -{' '}
-        <a href="assets/termosecondicoes.pdf" target="_blank">
-          Termos de uso
-        </a>
+        <Link href={'/privacyPolicies'}>Politica de privacidade</Link> -{' '}
+        <Link href={'/termsUse'}>Termos de uso</Link>
       </p>
       <p>Desenvolvido por Hydrah Tecnologia</p>
       <p>&#9400; Todos os direitos reservados - {year}</p>
