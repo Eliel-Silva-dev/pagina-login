@@ -1,1 +1,1 @@
-export * from './axios-config';
+export * as UserServices from './userServices/UserServices';
