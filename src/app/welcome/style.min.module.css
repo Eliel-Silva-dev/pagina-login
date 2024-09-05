@@ -1,0 +1,1 @@
+.main_welcome{display:flex;justify-content:center}.main_welcome section{display:flex;align-items:center;flex-direction:column;gap:50px;max-width:1000px}.main_welcome h2{font-size:3rem}.main_welcome h3{font-size:2rem}.main_welcome .user_register{font-size:4rem;padding:20px;border-radius:10px;border:1px solid var(--secondary_color)}/*# sourceMappingURL=style.min.module.css.map */

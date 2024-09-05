@@ -35,7 +35,9 @@ export default function Home() {
           userfind?.email == values.email &&
           userfind?.password == values.password
         ) {
-          router.push(`/welcome?id=${userfind.id}`);
+          localStorage.setItem('codUser', JSON.stringify(userfind.id));
+
+          router.push('/welcome');
         } else {
           alert(
             'Usuário não encontrado, verifique email e senha e tente novamente',
