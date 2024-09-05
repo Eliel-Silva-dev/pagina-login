@@ -43,3 +43,21 @@ export const getAllUsers = async (
     );
   }
 };
+
+export const getUserById = async (id: string): Promise<IDetalheUsers | Error> => {
+  try {
+    const { data } = await Api.get(`/users?${id}`);
+
+    if (data) {
+      return data;
+    }
+
+    return new Error('Erro ao consultar o registro');
+  } catch (error) {
+    console.error(error);
+
+    return new Error(
+      (error as { message: string }).message || 'Erro ao consultar o registro',
+    );
+  }
+};
