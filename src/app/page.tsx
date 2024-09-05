@@ -5,6 +5,8 @@ import { UserServices } from '@/shared/services/api';
 import { ErrorMessage, Formik, Form, Field } from 'formik';
 
 import style from './page.module.css';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 type ThandleLogin = {
   email: string;
@@ -19,26 +21,26 @@ const validationLogin: yup.Schema<ThandleLogin> = yup.object().shape({
 });
 
 export default function Home() {
+  const router = useRouter();
+
   const handlelogin = (values: ThandleLogin) => {
-    console.log('dados do login: ', values);
-
     UserServices.getAllUsers().then((response) => {
-      console.log('dados do servidor: ', response);
-
       if (response instanceof Error) {
         alert('não foi possível consultar os dados');
       } else {
         const users = response.data;
+        const userfind = users.find((user) => user.email == values.email);
 
-        users.forEach((user) => {
-          if (user.email == values.email && user.password == values.password) {
-            alert('Usuário encontrado');
-            console.log('redirecionar para pagina de usuário');
-            return
-          } else {
-            alert('Usuário não encontrado, tente novamente');
-          }
-        });
+        if (
+          userfind?.email == values.email &&
+          userfind?.password == values.password
+        ) {
+          router.push(`/welcome?id=${userfind.id}`);
+        } else {
+          alert(
+            'Usuário não encontrado, verifique email e senha e tente novamente',
+          );
+        }
       }
     });
   };
@@ -84,7 +86,10 @@ export default function Home() {
             </button>
           </Form>
         </Formik>
-        <h3>Servidor em manutenção!</h3>
+        <h3>
+          Primeira vez acessando este site?{' '}
+          <Link href={'/register'}>Cadastre-se</Link>
+        </h3>
       </section>
     </main>
   );
