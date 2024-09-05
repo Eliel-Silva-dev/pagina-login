@@ -10,7 +10,6 @@ type ThandleLogin = {
   email: string;
   password: string;
 };
-
 const validationLogin: yup.Schema<ThandleLogin> = yup.object().shape({
   email: yup.string().email('Email inválido').required('O email é obrigatório'),
   password: yup
@@ -25,6 +24,22 @@ export default function Home() {
 
     UserServices.getAllUsers().then((response) => {
       console.log('dados do servidor: ', response);
+
+      if (response instanceof Error) {
+        alert('não foi possível consultar os dados');
+      } else {
+        const users = response.data;
+
+        users.forEach((user) => {
+          if (user.email == values.email && user.password == values.password) {
+            alert('Usuário encontrado');
+            console.log('redirecionar para pagina de usuário');
+            return
+          } else {
+            alert('Usuário não encontrado, tente novamente');
+          }
+        });
+      }
     });
   };
 
