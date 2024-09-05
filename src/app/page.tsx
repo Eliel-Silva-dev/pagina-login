@@ -12,6 +12,8 @@ type ThandleLogin = {
 };
 export default function Home() {
   const handlelogin = (values: ThandleLogin) => {
+    console.log(values);
+    
     Axios.post('', {
       email: values.email,
       password: values.password,
