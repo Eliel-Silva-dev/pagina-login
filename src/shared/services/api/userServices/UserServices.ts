@@ -2,10 +2,12 @@ import { Environment } from '@/shared/environment';
 import { Api } from '../axios-config';
 
 export interface IListagemUsers {
+  id: string;
   email: string;
   password: string;
 }
 export interface IDetalheUsers {
+  id: string;
   email: string;
   password: string;
 }
@@ -44,7 +46,9 @@ export const getAllUsers = async (
   }
 };
 
-export const getUserById = async (id: string): Promise<IDetalheUsers | Error> => {
+export const getUserById = async (
+  id: string,
+): Promise<IDetalheUsers | Error> => {
   try {
     const { data } = await Api.get(`/users?${id}`);
 
@@ -58,6 +62,26 @@ export const getUserById = async (id: string): Promise<IDetalheUsers | Error> =>
 
     return new Error(
       (error as { message: string }).message || 'Erro ao consultar o registro',
+    );
+  }
+};
+
+export const createUser = async (
+  dados: Omit<IDetalheUsers, 'id'>,
+): Promise<string | Error> => {
+  try {
+    const { data } = await Api.post<IDetalheUsers>('/imoveis', dados);
+
+    if (data) {
+      return data.id;
+    }
+
+    return new Error('Erro ao criar o registro');
+  } catch (error) {
+    console.error(error);
+
+    return new Error(
+      (error as { message: string }).message || 'Erro ao criar o registro',
     );
   }
 };
