@@ -85,3 +85,18 @@ export const createUser = async (
     );
   }
 };
+
+export const updateUserById = async (
+  id: string,
+  dados: IDetalheUsers,
+): Promise<void | Error> => {
+  try {
+    await Api.put(`/users?${id}`, dados);
+  } catch (error) {
+    console.error(error);
+
+    return new Error(
+      (error as { message: string }).message || 'Erro ao atualizar o registro',
+    );
+  }
+};
