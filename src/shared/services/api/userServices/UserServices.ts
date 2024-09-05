@@ -3,11 +3,13 @@ import { Api } from '../axios-config';
 
 export interface IListagemUsers {
   id: string;
+  nome: string;
   email: string;
   password: string;
 }
 export interface IDetalheUsers {
   id: string;
+  nome: string;
   email: string;
   password: string;
 }
@@ -50,7 +52,7 @@ export const getUserById = async (
   id: string,
 ): Promise<IDetalheUsers | Error> => {
   try {
-    const { data } = await Api.get(`/users?${id}`);
+    const { data } = await Api.get<IDetalheUsers>(`/users/${id}`);
 
     if (data) {
       return data;

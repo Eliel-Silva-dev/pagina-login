@@ -2,26 +2,32 @@
   "users": [
     {
       "id": "1c",
-      "name": "Nome de teste 01",
+      "nome": "Usuário 01",
       "email": "teste01@gmail.com",
       "password": "123456"
     },
     {
       "id": "2c",
-      "name": "Nome de teste 02",
+      "nome": "Usuário 02",
       "email": "teste02@gmail.com",
       "password": "123456"
     },
     {
       "id": "3c",
-      "name": "Nome de teste 03",
+      "nome": "Usuário 03",
       "email": "teste03@gmail.com",
       "password": "123456"
     },
     {
       "id": "4c",
-      "name": "Nome de teste 04",
+      "nome": "Usuário 04",
       "email": "teste04@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "5c",
+      "nome": "Usuário 05",
+      "email": "teste05@gmail.com",
       "password": "123456"
     }
   ]

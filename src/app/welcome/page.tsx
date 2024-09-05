@@ -8,38 +8,51 @@ import { IDetalheUsers } from '@/shared/services/api/userServices/UserServices';
 import { UserServices } from '@/shared/services/api';
 
 const Welcome = () => {
-  const [userActive, setUserActive] = useState<IDetalheUsers>();
+  const [user, setUser] = useState<IDetalheUsers>();
+  const [totalUsers, setTotalUsers] = useState(0);
   const logout = () => {
     localStorage.removeItem('codUser');
   };
   useEffect(() => {
-    const lsContent = window.localStorage.getItem('codUser') || '0';
+    const lsContent = window.localStorage.getItem('codUser') || '';
 
-    UserServices.getUserById(JSON.parse(lsContent)).then((response) => {
-      console.log(response);
+    if (!lsContent) {
+      alert('Sua seção expirou favor realizar login novamente');
+    } else {
+      UserServices.getUserById(JSON.parse(lsContent)).then((response) => {
+        if (response instanceof Error) {
+          alert('Sua seção expirou favor realizar login novamente');
+        } else {
+          setUser(response);
+        }
+      });
+    }
 
+    UserServices.getAllUsers().then((response) => {
       if (response instanceof Error) {
-        alert(
-          'Sua seção expirou favor retornar para tela inicial e realizar login novamente',
-        );
+        alert('Não foi possivel buscar os dados');
+      } else {
+        setTotalUsers(response.totalCount);
       }
     });
-
-    console.log();
   }, []);
 
   return (
     <main className={style.main_welcome}>
-      <section>
-        <h2>Bem vindo usuário: teste</h2>
-        <h3>Número de usários cadastrados:</h3>
-        <div className={style.user_register}>04</div>
-        <Button>
-          <Link onClick={logout} href={'/'}>
-            Sair
-          </Link>
-        </Button>
-      </section>
+      {user ? (
+        <section>
+          <h2>Bem vindo: {user.nome}</h2>
+          <h3>Número de usários cadastrados:</h3>
+          <div className={style.user_register}>{totalUsers}</div>
+          <Button>
+            <Link onClick={logout} href={'/'}>
+              Sair
+            </Link>
+          </Button>
+        </section>
+      ) : (
+        <h3>Carregando dados do usuário</h3>
+      )}
     </main>
   );
 };
