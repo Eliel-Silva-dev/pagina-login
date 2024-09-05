@@ -70,7 +70,7 @@ export const createUser = async (
   dados: Omit<IDetalheUsers, 'id'>,
 ): Promise<string | Error> => {
   try {
-    const { data } = await Api.post<IDetalheUsers>('/imoveis', dados);
+    const { data } = await Api.post<IDetalheUsers>('/users', dados);
 
     if (data) {
       return data.id;
@@ -97,6 +97,18 @@ export const updateUserById = async (
 
     return new Error(
       (error as { message: string }).message || 'Erro ao atualizar o registro',
+    );
+  }
+};
+
+export const deleteUserById = async (id: string): Promise<void | Error> => {
+  try {
+    await Api.delete(`/users?${id}`);
+  } catch (error) {
+    console.error(error);
+
+    return new Error(
+      (error as { message: string }).message || 'Erro ao apagar o registro',
     );
   }
 };
