@@ -11,3 +11,5 @@ Api.interceptors.response.use(
   (response) => responseInterceptor(response),
   (error) => errorInterceptor(error),
 );
+
+export { Api };
