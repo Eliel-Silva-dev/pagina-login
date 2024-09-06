@@ -1,44 +1,60 @@
 'use client';
 
 import * as yup from 'yup';
-import Axios from 'axios';
 import { ErrorMessage, Formik, Form, Field } from 'formik';
 
 import style from './style.min.module.css';
+import { UserServices } from '@/shared/services/api';
+import { useRouter } from 'next/navigation';
 
 type ThandleRegister = {
+  nome: string;
   email: string;
   password: string;
   confirmation?: string;
 };
 
+const validationsRegister = yup.object().shape({
+  email: yup.string().email('Email inválido').required('O email é obrigatório'),
+  nome: yup
+    .string()
+    .min(2, 'O nome precisa ter mais de 2 letras')
+    .required('O nome é obrigatório'),
+
+  password: yup
+    .string()
+    .min(6, 'A senha deve ter pelo menos 6 caracteres')
+    .required('A senha é obrigatória'),
+  confirmation: yup
+    .string()
+    .oneOf([yup.ref('password'), undefined], 'As senhas são diferentes')
+    .required('A confirmação da senha é obrigatória'),
+});
+
 const Register = () => {
+  const navigate = useRouter();
+
   const handleRegister = (values: ThandleRegister) => {
-    Axios.post('', {
-      email: values.email,
-      password: values.password,
-    }).then((response) => {
-      alert(response.data.msg);
-      console.log(response);
-    });
-    //http://localhost:3001/register
+    validationsRegister
+      .validate(values, { abortEarly: false })
+      .then((valuesValidate) => {
+        const data = {
+          nome: valuesValidate.nome,
+          email: valuesValidate.email,
+          password: valuesValidate.password,
+        };
+
+        UserServices.createUser(data).then((result) => {
+
+          if (result instanceof Error) {
+            alert(result.message);
+          } else {
+            navigate.push('/');
+          }
+        });
+      })
+      .catch();
   };
-
-  const validationsRegister = yup.object().shape({
-    email: yup
-      .string()
-      .email('Email inválido')
-      .required('O email é obrigatório'),
-
-    password: yup
-      .string()
-      .min(6, 'A senha deve ter pelo menos 6 caracteres')
-      .required('A senha é obrigatória'),
-    confirmation: yup
-      .string()
-      .oneOf([yup.ref('password'), undefined], 'As senhas são diferentes')
-      .required('A confirmação da senha é obrigatória'),
-  });
 
   return (
     <main id={style.main_register}>
@@ -50,6 +66,18 @@ const Register = () => {
           validationSchema={validationsRegister}
         >
           <Form className={style.register_form}>
+            <div className={style.register_form_group}>
+              <Field
+                name="nome"
+                className={style.form_field}
+                placeholder="Nome"
+              />
+              <ErrorMessage
+                component="span"
+                name="nome"
+                className={style.form_error}
+              />
+            </div>
             <div className={style.register_form_group}>
               <Field
                 name="email"

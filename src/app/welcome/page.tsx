@@ -30,7 +30,7 @@ const Welcome = () => {
 
     UserServices.getAllUsers().then((response) => {
       if (response instanceof Error) {
-        alert('Não foi possivel buscar os dados');
+        alert('Não foi possível buscar os dados');
       } else {
         setTotalUsers(response.totalCount);
       }

@@ -29,6 +29,18 @@
       "nome": "Usuário 05",
       "email": "teste05@gmail.com",
       "password": "123456"
+    },
+    {
+      "nome": "Eliel Pereira Nobre da Silva",
+      "email": "eliel94@gmail.com",
+      "password": "123456",
+      "id": "VutB7rG"
+    },
+    {
+      "nome": "teste TESTANDO",
+      "email": "podepa@teste.cum",
+      "password": "555555",
+      "id": "y3e28PN"
     }
   ]
 }

@@ -24,11 +24,12 @@ export default function Home() {
   const router = useRouter();
 
   const handlelogin = (values: ThandleLogin) => {
-    UserServices.getAllUsers().then((response) => {
+    UserServices.getAllUsers(1).then((response) => {
       if (response instanceof Error) {
         alert('não foi possível consultar os dados');
       } else {
         const users = response.data;
+        console.log('dados da busca inicial: ', users);
         const userfind = users.find((user) => user.email == values.email);
 
         if (
@@ -98,7 +99,9 @@ export default function Home() {
           <p>
             Email: <a>teste01@gmail.com</a>
           </p>
-          <p>Senha: <a>123456</a></p>
+          <p>
+            Senha: <a>123456</a>
+          </p>
         </div>
       </section>
     </main>
