@@ -47,3 +47,7 @@
   background-color: var(--secondary_color);
   color: var(--primary_color);
 }
+#main_home .access {
+  margin-top: 10px;
+  font-size: 1.6rem;
+}

@@ -88,10 +88,18 @@ export default function Home() {
             </button>
           </Form>
         </Formik>
-        <h3>
+        <h2>
           Primeira vez acessando este site?{' '}
           <Link href={'/register'}>Cadastre-se</Link>
-        </h3>
+        </h2>
+
+        <div className={style.access}>
+          <h3>Credenciais de acesso:</h3>
+          <p>
+            Email: <a>teste01@gmail.com</a>
+          </p>
+          <p>Senha: <a>123456</a></p>
+        </div>
       </section>
     </main>
   );
