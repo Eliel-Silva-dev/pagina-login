@@ -45,15 +45,13 @@ const Register = () => {
         };
 
         UserServices.createUser(data).then((result) => {
-
           if (result instanceof Error) {
             alert(result.message);
           } else {
             navigate.push('/');
           }
         });
-      })
-      .catch();
+      });
   };
 
   return (
