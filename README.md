@@ -7,6 +7,8 @@ pagina de login com conexão a banco dedados.
 ### Lista com as funcionalidades:
 
 - [x] Implementação da LGPD;
+- [x] Cadastro de usuário;
+- [x] Conexão a banco de dados;
 
 ## 🔧 Instalação
 
@@ -16,19 +18,35 @@ Depois de clonar o repositório, instale as dependências rodando o seguinte com
 npm install
 ```
 
-Faça o build do projeto com o comando:
+Modifique o arquivo src/shared/environment/index.ts trocando a URL_BASE por:
+
+```
+http://localhost:3333
+```
+
+Depois rode no terminal o comando:
 
 ```
 npm run build
 ```
 
-Então você pode iniciar a aplicação rodando o comando:
+Inicie a aplicação rodando o comando:
 
 ```
 npm start
 ```
 
-Feito isso, acesse: `http://localhost:3000` no browser da sua preferencia.
+Abra um novo terminal e execute o comando para iniciar o servidor JSON:
+
+```
+npm run mock
+```
+
+Após os servidores inicializarem:
+
+Acesse: `http://localhost:3000` no browser da sua preferencia.
+
+Teste a aplicação.
 
 ## 🛠️ Tecnologias & Libs
 
@@ -56,8 +74,6 @@ E com as bibliotecas:
 
 ## Próximos passos
 
-- [ ] Cadastro de usuário;
-- [ ] Conexão a banco de dados;
 - [ ] implementar lazyload;
 - [ ] implementar tema light / dark;
 
